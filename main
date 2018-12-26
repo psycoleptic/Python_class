@@ -1,0 +1,17 @@
+from token import Parser
+from command import *
+from controller import Controller
+
+command_constructor = CommandConstructor()
+command_constructor.register("EXIT", ExitCommand)
+command_constructor.register("ADD", PlusCommand)
+command_constructor.register("SUB", MinusCommand)
+command_constructor.register("MUL", MultiplyCommand)
+command_constructor.register("DIV", DivideCommand)
+# command_constructor.register("SET", VariableCommand)
+controller = Controller(
+    parser=Parser(),
+    constructor=command_constructor,
+)
+
+controller.run()
